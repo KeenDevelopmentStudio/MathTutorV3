@@ -3,16 +3,18 @@
  * Programmer(s): Treven Keen
  * Section(s)...: Section 3
  * Date.........: 2026-10-16
- * GitHub Repo..: https://github.com/KeenDevelopmentStudio
+ * GitHub Repo..: https://github.com/KeenDevelopmentStudio/MathTutorV3
  * Description..:
     This program asks the user what their name is and welcomes them!
     It will also tell them some math fun facts and present them with some cool ASCII art.
-    They will be asked a randomized math question which will be checked with an if statement in a later mathTutor.
+    They will be asked random math questions.
+    These questions will get easier or harder based on performance.
  *****************************************************************************************************************/
 
 // Include Libraries
 #include <iostream>
 #include <random>
+#include <limits>
 
 // Set Default Namespace
 using namespace std;
@@ -21,14 +23,20 @@ int main() {
 
     // Initial Variables
     string username;
-    const int userAttempts = 3;
-    const int levelRange = 10;
-    const int level = 1;
-    string userInput = "y";
+
+    const int mathLevel = 1;
+    const int maxAttempts = 3;
+    int currentRange = 10;
+    int totalCorrect = 0;
+    int totalIncorrect = 0;
+
+    string userInput = "?";
+
     int leftNum;
     int rightNum;
     int mathType;
     char mathOperator;
+
     int userAnswer;
     int correctAnswer;
     int temp;
@@ -65,22 +73,22 @@ int main() {
     do {
 
         // Math Problem Variables
-        leftNum = rand() % (level * levelRange) + 1;
-        rightNum = rand() % 10 + 1;
+        leftNum = rand() % (currentRange) + 1;
+        rightNum = rand() % (currentRange) + 1;
 
         // Math Operator Variable
-        enum MathType {MT_ADD = 1, MT_SUBTRACT = 2, MT_MULTIPLY = 3, MT_DIVIDE = 4};
-        mathType = static_cast<MathType>(rand() % 4 + 1);
+        enum MathType {MT_ADD, MT_SUBTRACT, MT_MULTIPLY, MT_DIVIDE};
+        mathType = static_cast<MathType>(rand() % 4);
 
         //Switch
         switch (mathType) {
-            case 1:
+            case MT_ADD:
                 // Addition
                 mathOperator = '+';
                 correctAnswer = leftNum + rightNum;
                 break;
 
-            case 2:
+            case MT_SUBTRACT:
                 // Subtraction
                 mathOperator = '-';
 
@@ -93,13 +101,13 @@ int main() {
                 correctAnswer = leftNum - rightNum;
                 break;
 
-            case 3:
+            case MT_MULTIPLY:
                 // Multiplication
                 mathOperator = 'x';
                 correctAnswer = leftNum * rightNum;
                 break;
 
-            case 4:
+            case MT_DIVIDE:
                 // Division
                 mathOperator = '/';
                 correctAnswer = leftNum;
@@ -114,8 +122,12 @@ int main() {
         }
 
         //Request Math Answer
-        cout<<"What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
-        cin >> userAnswer;
+        cout << "What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
+        while (!(cin >> userAnswer)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number: " << endl << endl;
+        }
 
         // Evaluate Response
         if (userAnswer == correctAnswer) {
@@ -126,6 +138,26 @@ int main() {
             cout << "The correct answer was: " << correctAnswer << endl;
             cout << "You are a failure..." << endl << endl;
         }
+
+        while (true) {
+            // Request Additional Questions
+            cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
+            getline(cin, userInput);
+
+            // Lowercase Input
+            for (int i = 0; i < userInput.size(); i++) {
+                userInput.at(i) = tolower(userInput.at(i));
+            }
+
+            // Decision
+            if (userInput == "yes" || userInput == "y" || userInput == "no" || userInput == "n") {
+            break;
+            }
+            else {
+                cout << "Invalid input. Please enter a correct answer (y / yes || n / no): " << endl << endl;
+            }
+        }
+
     } while (userInput == "yes" || userInput == "y");
     return 0;
 }
