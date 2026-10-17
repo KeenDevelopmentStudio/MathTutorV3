@@ -15,6 +15,7 @@
 #include <iostream>
 #include <random>
 #include <limits>
+#include <cctype>
 
 // Set Default Namespace
 using namespace std;
@@ -24,8 +25,9 @@ int main() {
     // Initial Variables
     string username;
 
-    const int mathLevel = 1;
     const int maxAttempts = 3;
+    const int LEVEL_RANGE_CHANGE = 10;
+    int mathLevel = 1;
     int currentRange = 10;
     int totalCorrect = 0;
     int totalIncorrect = 0;
@@ -151,11 +153,26 @@ int main() {
                 }
             }
         }
+        if (totalCorrect >= 3) {
+            mathLevel += 1;
+            totalCorrect = 0;
+            totalIncorrect = 0;
+            currentRange += LEVEL_RANGE_CHANGE;
+            cout << "You have risen to Math Level " << mathLevel << endl;
+            cout << "Your new range is 0 - " << currentRange << endl;
+        }
+        else if (totalIncorrect >= 3 && mathLevel > 1) {
+            mathLevel -= 1;
+            totalCorrect = 0;
+            totalIncorrect = 0;
+            currentRange -= LEVEL_RANGE_CHANGE;
+            cout << "You have fallen to Math Level " << mathLevel << endl;
+            cout << "Your new range is 0 - " << currentRange << endl;
+        }
 
+        // Request Additional Questions
+        cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
         while (true) {
-            // Request Additional Questions
-            cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
-
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, userInput);
 
