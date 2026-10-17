@@ -122,26 +122,41 @@ int main() {
         }
 
         //Request Math Answer
-        cout << "What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
-        while (!(cin >> userAnswer)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a number: " << endl << endl;
-        }
+        for (int i = 0; i <= maxAttempts; i++) {
+            cout << "What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
 
-        // Evaluate Response
-        if (userAnswer == correctAnswer) {
-            cout << "You got it right. Good." << endl << endl;
-        }
-        else {
-            cout << "You got it wrong. Disappointing." << endl;
-            cout << "The correct answer was: " << correctAnswer << endl;
-            cout << "You are a failure..." << endl << endl;
+            // Ensure Correct Answer Type
+            while (!(cin >> userAnswer)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Please enter a number: " << endl << endl;
+            }
+
+            // Evaluate Response
+            if (userAnswer == correctAnswer) {
+                totalCorrect += 1;
+                cout << "You got it right. Good!" << endl << endl;
+                break;
+            }
+            else {
+                if (i == maxAttempts) {
+                    totalIncorrect += 1;
+                    cout << "You got it wrong. Disappointing." << endl;
+                    cout << "The correct answer was: " << correctAnswer << endl;
+                    cout << "You are a failure..." << endl << endl;
+                }
+                else {
+                    cout << "You got it wrong. Disappointing." << endl;
+                    cout << "You have " << (3 - i) << " attempts left." << endl;
+                }
+            }
         }
 
         while (true) {
             // Request Additional Questions
             cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, userInput);
 
             // Lowercase Input
