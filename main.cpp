@@ -21,8 +21,10 @@ int main() {
 
     // Initial Variables
     string username;
-    int loopCounter;
-    int correctAnswers = 0;
+    const int userAttempts = 3;
+    const int levelRange = 10;
+    const int level = 1;
+    string userInput = "y";
     int leftNum;
     int rightNum;
     int mathType;
@@ -59,18 +61,16 @@ int main() {
     // Set Seed
     srand(time(0));
 
-    cout << "How many math questions do you wish to answer?" << endl;
-    cin >> loopCounter;
-
     // Math Loop
-    for (int i = 0; i < loopCounter; i++) {
+    do {
 
         // Math Problem Variables
-        leftNum = rand() % 10 + 1;
+        leftNum = rand() % (level * levelRange) + 1;
         rightNum = rand() % 10 + 1;
 
         // Math Operator Variable
-        mathType = rand() % 4 + 1;
+        enum MathType {MT_ADD = 1, MT_SUBTRACT = 2, MT_MULTIPLY = 3, MT_DIVIDE = 4};
+        mathType = static_cast<MathType>(rand() % 4 + 1);
 
         //Switch
         switch (mathType) {
@@ -120,13 +120,12 @@ int main() {
         // Evaluate Response
         if (userAnswer == correctAnswer) {
             cout << "You got it right. Good." << endl << endl;
-            correctAnswers += 1;
         }
         else {
             cout << "You got it wrong. Disappointing." << endl;
             cout << "The correct answer was: " << correctAnswer << endl;
             cout << "You are a failure..." << endl << endl;
         }
-    }
+    } while (userInput == "yes" || userInput == "y");
     return 0;
 }
