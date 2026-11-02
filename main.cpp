@@ -27,6 +27,7 @@ int main() {
 
     const int maxAttempts = 3;
     const int LEVEL_RANGE_CHANGE = 10;
+
     int mathLevel = 1;
     int currentRange = 10;
     int totalCorrect = 0;
@@ -38,6 +39,7 @@ int main() {
     int rightNum;
     int mathType;
     char mathOperator;
+    enum MathType {MT_ADD, MT_SUBTRACT, MT_MULTIPLY, MT_DIVIDE};
 
     int userAnswer;
     int correctAnswer;
@@ -78,11 +80,10 @@ int main() {
         leftNum = rand() % (currentRange) + 1;
         rightNum = rand() % (currentRange) + 1;
 
-        // Math Operator Variable
-        enum MathType {MT_ADD, MT_SUBTRACT, MT_MULTIPLY, MT_DIVIDE};
+        // Math Operator Choosing
         mathType = static_cast<MathType>(rand() % 4);
 
-        //Switch
+        // Switch
         switch (mathType) {
             case MT_ADD:
                 // Addition
@@ -123,7 +124,7 @@ int main() {
                 return -1;
         }
 
-        //Request Math Answer
+        // Request Math Answer
         for (int i = 0; i <= maxAttempts; i++) {
             cout << "What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
 
@@ -154,7 +155,7 @@ int main() {
             }
         }
         if (totalCorrect >= 3) {
-            mathLevel += 1;
+            mathLevel++;
             totalCorrect = 0;
             totalIncorrect = 0;
             currentRange += LEVEL_RANGE_CHANGE;
@@ -162,7 +163,7 @@ int main() {
             cout << "Your new range is 0 - " << currentRange << endl;
         }
         else if (totalIncorrect >= 3 && mathLevel > 1) {
-            mathLevel -= 1;
+            mathLevel--;
             totalCorrect = 0;
             totalIncorrect = 0;
             currentRange -= LEVEL_RANGE_CHANGE;
@@ -172,24 +173,26 @@ int main() {
 
         // Request Additional Questions
         cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
         while (true) {
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, userInput);
 
-            // Lowercase Input
+            // Lowercase transition
             for (int i = 0; i < userInput.size(); i++) {
                 userInput.at(i) = tolower(userInput.at(i));
             }
 
-            // Decision
+            // Decision based on answer
             if (userInput == "yes" || userInput == "y" || userInput == "no" || userInput == "n") {
             break;
             }
-            else {
-                cout << "Invalid input. Please enter a correct answer (y / yes || n / no): " << endl << endl;
-            }
+
+            cout << "Invalid input. Please enter a correct answer (y / yes || n / no): " << endl;
         }
 
     } while (userInput == "yes" || userInput == "y");
+
+    cout << "Thank you for using MathTutorV3 to study! V4 is coming soon!" << endl;
     return 0;
 }
