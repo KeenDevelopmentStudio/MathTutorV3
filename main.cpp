@@ -137,7 +137,8 @@ int main() {
 
         // Request Math Answer
         for (int i = 0; i <= maxAttempts; i++) {
-            cout << "What is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
+            cout << "[Level #" << mathLevel << "] " << username << ", ";
+            cout << "what is the answer to " << leftNum << " " << mathOperator << " " << rightNum << "?" << endl;
 
             // Ensure Correct Answer Type
             while (!(cin >> userAnswer)) {
@@ -184,7 +185,7 @@ int main() {
             mathLevel--; // Decrease Level by 1
             totalCorrect = 0; // Reset Correct Count
             totalIncorrect = 0; // Reset Incorrect Count
-            currentRange -= LEVEL_RANGE_CHANGE; // Update Range to Match Level
+            currentRange -= LEVEL_RANGE_CHANGE; // Update Range to Match LevelK
             cout << "You have fallen to Math Level " << mathLevel << endl;
             cout << "Your new range is 0 - " << currentRange << endl;
         }
