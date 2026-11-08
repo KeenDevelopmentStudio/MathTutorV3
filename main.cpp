@@ -25,26 +25,33 @@ using namespace std;
 int main() {
 
     // Initial Variables
-    string username;
 
+    // Constants
     const int maxAttempts = 3;
     const int LEVEL_RANGE_CHANGE = 10;
 
+    // User's Input Strings
+    string username;
+    string userInput = "?";
+
+    // Equation Type Variables
+    enum MathType {MT_ADD, MT_SUBTRACT, MT_MULTIPLY, MT_DIVIDE};
+    char mathOperator;
+
+    // Math Equation Variables
+    int leftNum;
+    int rightNum;
+    int mathType;
+    int correctAnswer;
+
+    // Math Leveling Variables
     int mathLevel = 1;
     int currentRange = 10;
     int totalCorrect = 0;
     int totalIncorrect = 0;
 
-    string userInput = "?";
-
-    int leftNum;
-    int rightNum;
-    int mathType;
-    char mathOperator;
-    enum MathType {MT_ADD, MT_SUBTRACT, MT_MULTIPLY, MT_DIVIDE};
-
+    // Answer and Temporary Storage
     int userAnswer;
-    int correctAnswer;
     int temp;
 
     // Title Display
@@ -114,12 +121,14 @@ int main() {
 
             case MT_DIVIDE:
                 // Division
+                /// No Fractions Allowed
                 mathOperator = '/';
-                correctAnswer = leftNum;
-                leftNum *= rightNum;
+                correctAnswer = leftNum; // Set Correct Answer to Old Left Number
+                leftNum *= rightNum; // Set New Left Number to Dividend and Right Number to Divisor
                 break;
 
             default:
+                // Error Handling
                 cout << "Invalid question type: " << mathType << endl;
                 cout << "Program ended with an error -1" << endl;
                 cout << "Please report this problem to the developers." << endl;
@@ -132,52 +141,62 @@ int main() {
 
             // Ensure Correct Answer Type
             while (!(cin >> userAnswer)) {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.clear(); // Clear cin error flag
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore Max Input up to \n
                 cout << "Invalid input. Please enter a number: " << endl << endl;
             }
 
             // Evaluate Response
+            /// Correct Answer
             if (userAnswer == correctAnswer) {
-                totalCorrect++;
+                totalCorrect++; // Increase Correct Answer Counter
                 cout << "You got it right. Good!" << endl << endl;
                 break;
             }
+
+            // Incorrect Answer
             else {
-                if (i == maxAttempts) {
-                    totalIncorrect++;
+                if (i == maxAttempts) { // Out of Math Question Attempts
+                    totalIncorrect++; // Increase Incorrect Answer Counter
                     cout << "You got it wrong. Disappointing." << endl;
                     cout << "The correct answer was: " << correctAnswer << endl;
                     cout << "You are a failure..." << endl << endl;
                 }
-                else {
+                else { // Still Has Math Question Attempts
                     cout << "You got it wrong. Disappointing." << endl;
-                    cout << "You have " << (3 - i) << " attempts left." << endl;
+                    cout << "You have " << (maxAttempts - i) << " attempts left." << endl;
                 }
             }
         }
+
+        // Leveling Up mathLevel
         if (totalCorrect >= 3) {
-            mathLevel++;
-            totalCorrect = 0;
-            totalIncorrect = 0;
-            currentRange += LEVEL_RANGE_CHANGE;
+            mathLevel++; // Increase Level by 1
+            totalCorrect = 0; // Reset Correct Count
+            totalIncorrect = 0; // Reset Incorrect Count
+            currentRange += LEVEL_RANGE_CHANGE; // Update Range to Match Level
             cout << "You have risen to Math Level " << mathLevel << endl;
             cout << "Your new range is 0 - " << currentRange << endl;
         }
+
+        // Leveling Down mathLevel
         else if (totalIncorrect >= 3 && mathLevel > 1) {
-            mathLevel--;
-            totalCorrect = 0;
-            totalIncorrect = 0;
-            currentRange -= LEVEL_RANGE_CHANGE;
+            mathLevel--; // Decrease Level by 1
+            totalCorrect = 0; // Reset Correct Count
+            totalIncorrect = 0; // Reset Incorrect Count
+            currentRange -= LEVEL_RANGE_CHANGE; // Update Range to Match Level
             cout << "You have fallen to Math Level " << mathLevel << endl;
             cout << "Your new range is 0 - " << currentRange << endl;
         }
 
         // Request Additional Questions
         cout << "Would you like to continue? (y / yes || n / no): " << endl << endl;
+
+        // Clears Lines From Input Buffer
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         while (true) {
+            // Get Answer for Continue Question
             getline(cin, userInput);
 
             // Lowercase transition
