@@ -12,10 +12,12 @@
  *****************************************************************************************************************/
 
 // Include Libraries
-#include <iostream>
-#include <random>
-#include <limits>
-#include <cctype>
+#include <iostream> // Adds c-in and c-out
+#include <ctime> // Adds usage for time(0)
+#include <string> // Allows for manipulating strings
+#include <limits> // Allows for limiting of values with cin.ignore
+#include <cstdlib> // Adds randomization
+#include <cctype> // Adds character handling like to-lower
 
 // Set Default Namespace
 using namespace std;
@@ -137,13 +139,13 @@ int main() {
 
             // Evaluate Response
             if (userAnswer == correctAnswer) {
-                totalCorrect += 1;
+                totalCorrect++;
                 cout << "You got it right. Good!" << endl << endl;
                 break;
             }
             else {
                 if (i == maxAttempts) {
-                    totalIncorrect += 1;
+                    totalIncorrect++;
                     cout << "You got it wrong. Disappointing." << endl;
                     cout << "The correct answer was: " << correctAnswer << endl;
                     cout << "You are a failure..." << endl << endl;
