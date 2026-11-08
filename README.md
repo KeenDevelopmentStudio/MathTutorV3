@@ -33,33 +33,11 @@ Cin Ignore
 
 ## Console Output Testing Example
 
-Correct Math Answers
+Leveling Up
 ```
-C:\Users\Keen\OneDrive\Desktop\MathTutorV3\cmake-build-debug\MathTutorV3.exe
-******************************************************************************
-
-       __  __       _   _   _____      _           __     _______
-      |  \/  | __ _| |_| |_|_   _|   _| |_ ___  _ _\ \   / /___ /
-      | |\/| |/ _` | __| '_ \| || | | | __/ _ \| '__\ \ / /  |_ \
-      | |  | | (_| | |_| | | | || |_| | || (_) | |   \ V /  ___) |
-      |_|  |_|\__,_|\__|_| |_|_| \__,_|\__\___/|_|    \_/  |____/
-
-******************************************************************************
-*    Welcome to Version 3 of the Awesome Math Tutor!        *
-******************************************************************************
-   Un-fun math rules:
-
-* No fun allowed, only mathematical equations.
-* Laughing results in weekend detention.
-* You must recite 1000 digits of Pi numbers at the start of each class period.
-* If it seems easy, you're wrong.
-******************************************************************************
-Please enter your Username:
-Treven Keen
-
-Welcome to the Math Tutor Treven Keen!
-What is the answer to 10 x 8?
-80
+Welcome to the Math Tutor Keen!
+[Level #1] Keen, what is the answer to 10 x 4?
+40
 
 You got it right. Good!
 
@@ -67,8 +45,8 @@ Would you like to continue? (y / yes || n / no):
 
 y
 
-What is the answer to 7 x 3?
-21
+[Level #1] Keen, what is the answer to 1 x 3?
+3
 
 You got it right. Good!
 
@@ -76,198 +54,119 @@ Would you like to continue? (y / yes || n / no):
 
 y
 
-What is the answer to 9 - 5?
-4
+[Level #1] Keen, what is the answer to 8 x 9?
+72
 
 You got it right. Good!
 
 You have risen to Math Level 2
 Your new range is 0 - 20
-Would you like to continue? (y / yes || n / no):
-
-n
-
-
-Process finished with exit code 0
 ```
 
-Incorrect Math Answers
+Leveling Down
 ```
-C:\Users\Keen\OneDrive\Desktop\MathTutorV3\cmake-build-debug\MathTutorV3.exe
-******************************************************************************
-
-       __  __       _   _   _____      _           __     _______
-      |  \/  | __ _| |_| |_|_   _|   _| |_ ___  _ _\ \   / /___ /
-      | |\/| |/ _` | __| '_ \| || | | | __/ _ \| '__\ \ / /  |_ \
-      | |  | | (_| | |_| | | | || |_| | || (_) | |   \ V /  ___) |
-      |_|  |_|\__,_|\__|_| |_|_| \__,_|\__\___/|_|    \_/  |____/
-
-******************************************************************************
-*    Welcome to Version 3 of the Awesome Math Tutor!        *
-******************************************************************************
-   Un-fun math rules:
-
-* No fun allowed, only mathematical equations.
-* Laughing results in weekend detention.
-* You must recite 1000 digits of Pi numbers at the start of each class period.
-* If it seems easy, you're wrong.
-******************************************************************************
-Please enter your Username:
-Treven Keen
-
-Welcome to the Math Tutor Treven Keen!
-What is the answer to 10 / 5?
+[Level #2] Keen, what is the answer to 11 x 2?
 67
 
 You got it wrong. Disappointing.
 You have 3 attempts left.
-What is the answer to 10 / 5?
+[Level #2] Keen, what is the answer to 11 x 2?
 67
 
 You got it wrong. Disappointing.
 You have 2 attempts left.
-What is the answer to 10 / 5?
+[Level #2] Keen, what is the answer to 11 x 2?
 67
 
 You got it wrong. Disappointing.
 You have 1 attempts left.
-What is the answer to 10 / 5?
+[Level #2] Keen, what is the answer to 11 x 2?
 67
 
 You got it wrong. Disappointing.
-The correct answer was: 2
+The correct answer was: 22
 You are a failure...
 
 Would you like to continue? (y / yes || n / no):
-
 y
 
-What is the answer to 6 + 3?
+[Level #2] Keen, what is the answer to 7 + 9?
 67
 
 You got it wrong. Disappointing.
 You have 3 attempts left.
-What is the answer to 6 + 3?
+[Level #2] Keen, what is the answer to 7 + 9?
 67
 
 You got it wrong. Disappointing.
 You have 2 attempts left.
-What is the answer to 6 + 3?
+[Level #2] Keen, what is the answer to 7 + 9?
 67
 
 You got it wrong. Disappointing.
 You have 1 attempts left.
-What is the answer to 6 + 3?
+[Level #2] Keen, what is the answer to 7 + 9?
 67
 
 You got it wrong. Disappointing.
-The correct answer was: 9
+The correct answer was: 16
 You are a failure...
 
 Would you like to continue? (y / yes || n / no):
-
 y
 
-What is the answer to 2 - 1?
+[Level #2] Keen, what is the answer to 5 x 4?
 67
 
 You got it wrong. Disappointing.
 You have 3 attempts left.
-What is the answer to 2 - 1?
+[Level #2] Keen, what is the answer to 5 x 4?
 67
 
 You got it wrong. Disappointing.
 You have 2 attempts left.
-What is the answer to 2 - 1?
+[Level #2] Keen, what is the answer to 5 x 4?
 67
 
 You got it wrong. Disappointing.
 You have 1 attempts left.
-What is the answer to 2 - 1?
+[Level #2] Keen, what is the answer to 5 x 4?
 67
 
 You got it wrong. Disappointing.
-The correct answer was: 1
+The correct answer was: 20
 You are a failure...
 
-Would you like to continue? (y / yes || n / no):
-
-y
-
-What is the answer to 1 x 5?
-67
-
-You got it wrong. Disappointing.
-You have 3 attempts left.
-What is the answer to 1 x 5?
-67
-
-You got it wrong. Disappointing.
-You have 2 attempts left.
-What is the answer to 1 x 5?
-67
-
-You got it wrong. Disappointing.
-You have 1 attempts left.
-What is the answer to 1 x 5?
-67
-
-You got it wrong. Disappointing.
-The correct answer was: 5
-You are a failure...
-
-Would you like to continue? (y / yes || n / no):
-
-n
-
-
-Process finished with exit code 0
+You have fallen to Math Level 1
+Your new range is 0 - 10
 ```
 
-Invalid Answers
+Invalid Number
 ```
-C:\Users\Keen\OneDrive\Desktop\MathTutorV3\cmake-build-debug\MathTutorV3.exe
-******************************************************************************
-
-       __  __       _   _   _____      _           __     _______
-      |  \/  | __ _| |_| |_|_   _|   _| |_ ___  _ _\ \   / /___ /
-      | |\/| |/ _` | __| '_ \| || | | | __/ _ \| '__\ \ / /  |_ \
-      | |  | | (_| | |_| | | | || |_| | || (_) | |   \ V /  ___) |
-      |_|  |_|\__,_|\__|_| |_|_| \__,_|\__\___/|_|    \_/  |____/
-
-******************************************************************************
-*    Welcome to Version 3 of the Awesome Math Tutor!        *
-******************************************************************************
-   Un-fun math rules:
-
-* No fun allowed, only mathematical equations.
-* Laughing results in weekend detention.
-* You must recite 1000 digits of Pi numbers at the start of each class period.
-* If it seems easy, you're wrong.
-******************************************************************************
-Please enter your Username:
-Keen 47 2026
-
-Welcome to the Math Tutor Keen 47 2026!
-What is the answer to 9 - 5?
-Your mother
+[Level #1] Keen, what is the answer to 1 + 7?
+Eight
 
 Invalid input. Please enter a number:
+I SAID EIGHT
 
-4
+Invalid input. Please enter a number:
+8
 
 You got it right. Good!
+```
 
+Invalid Yes/No Input
+```
 Would you like to continue? (y / yes || n / no):
-
-67
+maybe
 
 Invalid input. Please enter a correct answer (y / yes || n / no):
+perhaps
 
+Invalid input. Please enter a correct answer (y / yes || n / no):
 n
 
-n
-
+Thank you for using MathTutorV3 to study! V4 is coming soon!
 
 Process finished with exit code 0
 ```
